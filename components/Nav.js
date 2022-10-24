@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../img/Logo.png";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import useScrollPosition from "../components/useScrollPosition";
 
 const Nav = () => {
   const { pathname } = useLocation();
+
+  const [isShrunk, setIsShrunk] = useState(false);
+
+  const scrollPosition = useScrollPosition();
+
+  useEffect(() => {
+    const scrollPositionHandler = () => {
+      if (scrollPosition >= 80) {
+        setIsShrunk(true);
+        console.log(scrollPosition);
+      } else if (scrollPosition < 80) {
+        setIsShrunk(false);
+      }
+    };
+    scrollPositionHandler();
+  }, [scrollPosition]);
+
   return (
-    <StyledNav>
+    <StyledNav id="navbar" isShrunk={isShrunk}>
       <Link to="/">
-        <img src={Logo} alt="Logo" />
+        <img src={Logo} alt="Logo" id="logo" />
       </Link>
 
       <ul>
@@ -58,8 +76,8 @@ const StyledNav = styled.nav`
   a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
-    transition: all 0.5s ease;
+    font-size: ${(props) => (!props.isShrunk ? "1rem" : ".8rem")};
+    transition: all 0.75s ease;
   }
   ul {
     display: flex;
@@ -72,8 +90,9 @@ const StyledNav = styled.nav`
   }
 
   img {
-    height: 6rem;
     padding: 0;
+    height: ${(props) => (!props.isShrunk ? "6rem" : "3.5rem")};
+    transition: all 0.75s ease;
   }
   @media (max-width: 860px) {
     flex-direction: column;

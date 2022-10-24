@@ -31,6 +31,9 @@ export const titleAnimation = {
       ease: "easeOut",
     },
   },
+  exit: {
+    y: 200,
+  },
 };
 
 export const fade = {

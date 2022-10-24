@@ -1,3 +1,4 @@
+import React from "react";
 import GlobalStyle from "./components/GlobalStyle";
 import Nav from "./components/Nav";
 import AboutUs from "./pages/AboutUs";
@@ -12,6 +13,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const location = useLocation();
+
   return (
     <div className="App">
       <Nav />

@@ -4,6 +4,7 @@ import { LayoutGroup, motion } from "framer-motion";
 import { pageAnimation, titleAnimation } from "../animation";
 import styled from "styled-components";
 import Toggle from "../components/Toggle";
+import ContactForm from "../components/ContactForm";
 
 const ContactUs = () => {
   return (
@@ -20,26 +21,31 @@ const ContactUs = () => {
       </Title>
       <div>
         <Hide>
-          <LayoutGroup id="a">
-            <Social variants={titleAnimation}>
-              <Toggle title=" Book A Table">
+          <Social variants={titleAnimation}>
+            <Toggle title="Book A Table">
+              <LayoutGroup id="a">
                 <ToggleDiv>
-                  <p>This is a booking div.</p>
+                  <ContactForm layout />
                 </ToggleDiv>
-              </Toggle>
-            </Social>
-          </LayoutGroup>
+              </LayoutGroup>
+            </Toggle>
+          </Social>
         </Hide>
         <Hide>
-          <LayoutGroup id="b">
-            <Social variants={titleAnimation}>
-              <Toggle title="Contact Us">
+          <Social variants={titleAnimation}>
+            <Toggle title="Contact Us">
+              <LayoutGroup id="b">
                 <ToggleDiv>
-                  <p>These are our contact details.</p>
+                  <p>
+                    You can contact us on phone by calling: +61 404 456 456.
+                  </p>
+                  <p>
+                    Alternatively you can email us on contact@thatplace.com.au.
+                  </p>
                 </ToggleDiv>
-              </Toggle>
-            </Social>
-          </LayoutGroup>
+              </LayoutGroup>
+            </Toggle>
+          </Social>
         </Hide>
         <Hide>
           <Social variants={titleAnimation}>
@@ -93,14 +99,6 @@ const Social = styled(motion.div)`
 const ToggleDiv = styled(motion.div)`
   display: block;
   padding: 2rem;
-`;
-
-const Arrow = styled(motion.div)`
-  width: 0;
-  height: 0;
-  border-top: 1rem solid black;
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
 `;
 
 export default ContactUs;
