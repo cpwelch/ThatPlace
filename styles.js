@@ -12,8 +12,9 @@ export const StyledLayout = styled(motion.div)`
   color: white;
   @media (max-width: 860px) {
     display: block;
-    padding: 2rem 2rem;
+    padding: 2rem 1rem;
     text-align: center;
+    justify-content: center;
   }
 `;
 
